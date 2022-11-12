@@ -1,0 +1,28 @@
+// 메뉴명, 가격
+import java.util.ArrayList;
+
+public class Menu {
+
+	ArrayList<String> alName;
+	ArrayList<Integer> alPrice;
+
+	Menu(){
+	}
+	
+	void display(int i) {
+		for(i=0;i<alName.size();i++) {
+		System.out.println(alName.get(i) + " : " + alPrice.get(i));
+		}
+		// name : price
+		// name : prices
+		// 메뉴명, 가격 목록 출력
+
+	}
+	void setName(String alName) {
+		this.alName = alName;
+	}
+	void setPrice(int price) {
+		this.alPrice = alPrice;
+//		setName이 한번 호출되면 이것도 출력
+	}
+}

@@ -1,0 +1,11 @@
+public class gitmanual {
+	public static void main(String[] args) {
+		String a = "";
+		a = "         ,r'\"7\n" + 	
+		    "r`-_   ,'  ,/\n" + 		
+		    " \\. \". L_r'\n" + 		
+		    "   `~\\/\n" + 		
+		    "      |\n" + 			
+		    "      |";
+	}
+}

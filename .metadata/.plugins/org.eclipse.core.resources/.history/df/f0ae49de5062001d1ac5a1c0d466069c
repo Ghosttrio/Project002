@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Manager {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		Menu menu = new Menu();
+		
+
+		System.out.print("메뉴명을 입력하시오: ");
+		String Name1 = s.nextLine();
+		menu.setName(Name1);
+		System.out.print("가격을 입력하시오: ");
+		int Price1 = s.nextInt();
+		menu.setPrice(Price1);
+		
+		menu.display(1);
+		
+
+		// 메뉴명 추가(Latte) setmenu호출
+		// 가격추가(3200) setprice호출
+		// 메뉴명 추가(Espresso)
+		// 가격 추가(2500)
+		// 메뉴명 추가(Americano
+		// 가격 추가(2700)
+		// 메뉴명/가격 목록 출력 (display())
+		
+	}
+
+}

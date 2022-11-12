@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class gitmanual{
+	
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int i = 2;
+		while(i<n) {
+			if(n%i==0) {
+				break;
+			}
+			i++;
+		}
+		if(i==n) {
+			System.out.println("소수");
+		}else {
+			System.out.println("소수x");
+		}
+	}
+}
