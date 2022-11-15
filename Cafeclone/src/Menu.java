@@ -9,26 +9,27 @@ import java.util.Scanner;
 
 public class Menu {
 
-//¡äÃÊ±âÈ­--------------------------------------------------------------
-	
 	ArrayList<String> alName;
 	ArrayList<Integer> alPrice;
 	ArrayList<String> alName1;
 	ArrayList<Integer> alPrice1;
-
+	
+// â–½ì´ˆê¸°í™” ----------------------------------------------
+	
 	Menu(){
 		this.alName = new ArrayList<String>();
 		this.alPrice = new ArrayList<Integer>();
-		
 		this.alName1 = new ArrayList<String>();
 		this.alPrice1 = new ArrayList<Integer>();
-
+		//fileì˜ ë©”ë‰´ë¦¬ìŠ¤íŠ¸ë¥¼ ì½ì–´ë“¤ì¸ë‹¤.
 		Scanner sMenu;
 		try {
 			sMenu = new Scanner(new File("c:\\data\\menu.txt"));
+			
 			while(sMenu.hasNextLine()) {
 				String str = sMenu.nextLine();
-				String[] arMenu = str.split(",");
+				String[] arMenu = str.split(","); // ["Latte", "3200"]
+				//this.alName.add(arMenu[0]);
 				this.setName(arMenu[0]);
 				this.setPrice(Integer.parseInt(arMenu[1]));
 			}
@@ -36,36 +37,39 @@ public class Menu {
 			e.printStackTrace();
 		}
 	}
-// ¡äÀúÀå----------------------------------------------------------
-	
+	// xë¥¼ ëˆ„ë¥´ë©´ ì €ì¥
 	void save() {
 		try {
 			File file = new File("c:\\data\\menu.txt");
+			
 			if(!file.exists()) {
 				file.createNewFile();
 			}
+			
 			FileWriter fw = new FileWriter(file);
 			PrintWriter writer = new PrintWriter(fw);
+			
 			for(int i=0; i<this.alName.size(); i++) {
 				String str = this.alName.get(i)+","+this.alPrice.get(i)+"\n";
 				writer.write(str);
 			}
 			writer.close();
+			
 		}	catch (IOException e){
 			e.printStackTrace();
 		}
 	}
 	
-// ¡äÃß°¡ -----------------------------------------------	
+// â–½ì¶”ê°€ -----------------------------------------------	
 	
 	void build() {
 		Scanner s1 = new Scanner(System.in);
 		Scanner s2 = new Scanner(System.in);
 		while(true) {
-			System.out.print("¸Ş´º¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+			System.out.print("ë©”ë‰´ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 			String name = s1.nextLine();
 			if(name.equals("")) break;
-			System.out.print("°¡°İÀ» ÀÔ·ÂÇÏ½Ã¿À: ");
+			System.out.print("ê°€ê²©ì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 			this.setName(name);
 			int price = s2.nextInt();
 			this.setPrice(price);
@@ -73,46 +77,81 @@ public class Menu {
 		}
 	}
 	
-// ¡ä»èÁ¦ -----------------------------------------------
+// â–½ì‚­ì œ -----------------------------------------------
 	
 	void delete() {
 		Scanner s1 = new Scanner(System.in);
 		
 		while(true){
-			System.out.print("¸Ş´º¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
-			String a = s1.nextLine();
-			if(a.equals("")) break;
-			int n = Integer.parseInt(a);
-			this.alName.remove(n);
-			this.alPrice.remove(n);
+		System.out.print("ë©”ë‰´ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
+		String a = s1.nextLine();
+		System.out.println();
+		if(a.equals("")) break;
+		int n = Integer.parseInt(a);
+		this.alName.remove(n);
+		this.alPrice.remove(n);
 		}
 	}
-
-// ¡ä¼öÁ¤ -----------------------------------------------
+	
+//	void delete() {
+//		
+//		Scanner s = new Scanner(System.in);
+//		while(true) {
+//			System.out.println("ì‚­ì œí•  ë©”ë‰´ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤ ('':ì¢…ë£Œ):");
+//			String str = s.nextLine();
+//			if(str.equals("")) break;
+//			
+//			int ndx=Integer.parseInt(str)-1;
+//			this.alName.remove(ndx);
+//			this.alPrice.remove(ndx);
+//			this.display();
+//			
+//		}
+//	}
+	
+// â–½ìˆ˜ì • -----------------------------------------------
 	
 	void update() {
 		Scanner s1 = new Scanner(System.in);
 		Scanner s2 = new Scanner(System.in);
 		Scanner s3 = new Scanner(System.in);
 		
-		System.out.print("¸Ş´º¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+		System.out.print("ë©”ë‰´ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 		int n = s1.nextInt();
-		System.out.print("¼öÁ¤ÇÒ ´Ù¸¥ ¸Ş´ºÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À: ");
+		System.out.print("ìˆ˜ì •í•  ë‹¤ë¥¸ ë©”ë‰´ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 		String name = s2.nextLine();
 		alName.set(n, name);
-		System.out.print("¼öÁ¤ÇÒ ±İ¾×À» ÀÔ·ÂÇÏ½Ã¿À: ");
+		System.out.print("ìˆ˜ì •í•  ê¸ˆì•¡ì„ ì…ë ¥í•˜ì‹œì˜¤: ");
 		int price = s3.nextInt();
 		alPrice.set(n, price);
 	}
+
+
+// â–½ë§¤ì¶œê´€ë¦¬ ---------------------------------------------
 	
-// ¡ä¸Ş¼Òµå ----------------------------------------------
+//	void sales() {
+//		for(int i=0; i<this.alName1.size(); i++) {
+//			System.out.println("\""+this.alName1.get(i)+"\"" + "ì˜ ë§¤ì¶œ : " + this.alPrice1.get(i)+ "ì›");
+//			}
+//	}
+	
+// â–½ë©”ì†Œë“œ ----------------------------------------------
 	
 	void display() {
-		System.out.println("--------¸Ş´º--------");
+		System.out.println("--------ë©”ë‰´--------");
 		for(int i=0; i<this.alName.size(); i++) {
-		System.out.println(i+")  "+this.alName.get(i) + " ¢¹ " + this.alPrice.get(i)+"¿ø");
+		System.out.println(i+")  "+this.alName.get(i) + " â–· " + this.alPrice.get(i)+"ì›");
 		}
 		System.out.println("-------------------");
+	}
+	
+	void getName(int alName) {
+		this.alName.get(alName);
+	}
+	
+	void getPrice(int alPrice) {
+		this.alPrice.get(alPrice);
+		return;
 	}
 	
 	void setName(String alName) {
@@ -123,4 +162,5 @@ public class Menu {
 		this.alPrice.add(alPrice);
 	}
 	
+
 }

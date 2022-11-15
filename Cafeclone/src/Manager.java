@@ -5,19 +5,28 @@ public class Manager {
 	public static void main(String[] args) {
 		
 		Scanner s = new Scanner(System.in);
+		
 		Scanner s1 = new Scanner(System.in);
 		Scanner s2 = new Scanner(System.in);
 		Scanner s3 = new Scanner(System.in);
-		Menu menu = new Menu();
-
-		menu.display();
-		System.out.print("ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (m:¸Ş´º°ü¸®, o:ÁÖ¹®°ü¸®, s:¸ÅÃâ°ü¸®, x:Á¾·á) : ");
-		String str = s.nextLine();		
 		
+		Menu menu = new Menu();
+		menu.display();
+		
+		System.out.print("ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (m:ë©”ë‰´ê´€ë¦¬, o:ì£¼ë¬¸ê´€ë¦¬, s:ë§¤ì¶œê´€ë¦¬, x:ì¢…ë£Œ) : ");
+		String str = s.nextLine();		
 		while(true) {
-			if(str.equals("m")) {
-				System.out.print("//ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (c:Ãß°¡, r:Ãâ·Â, u:¼öÁ¤, d:»èÁ¦, x:Á¾·á) : ");
+		if(str.equals("m")) {
+				System.out.print("//ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (c:ì¶”ê°€, r:ì¶œë ¥, u:ìˆ˜ì •, d:ì‚­ì œ, x:ì¢…ë£Œ) : ");
 				String str1 = s.nextLine();
+
+				// ìŠ¤ìœ„ì¹˜ë¬¸ë„ ì‚¬ìš©ê°€ëŠ¥
+//				switch(str1) {
+//				case : "c":
+//					menu.build() ; break;
+//				case : "r":
+//					~~~~~~
+//				}
 				
 				while(true) {
 					if(str1.equals("c")) {
@@ -32,15 +41,16 @@ public class Manager {
 						menu.save();
 						break;
 					}
-					System.out.println("//ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (c:Ãß°¡, r:Ãâ·Â, u:¼öÁ¤, d:»èÁ¦, x:Á¾·á)");
+					System.out.println("//ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (c:ì¶”ê°€, r:ì¶œë ¥, u:ìˆ˜ì •, d:ì‚­ì œ, x:ì¢…ë£Œ)");
 					str1 = s.nextLine();
 				}
 				
 			} else if(str.equals("o")) {
-				Order order = new Order(menu);
-				System.out.print("//ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (c:Ãß°¡, r:Ãâ·Â, x:Á¾·á) : ");
-				String str1 = s.nextLine();
 				
+				Order order = new Order(menu); // ê´„í˜¸ì•ˆì—  menu
+				
+				System.out.print("//ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (c:ì¶”ê°€, r:ì¶œë ¥, x:ì¢…ë£Œ) : ");
+				String str1 = s.nextLine();
 					while(true) {
 						if(str1.equals("c")) {
 							order.add();
@@ -50,18 +60,20 @@ public class Manager {
 							order.reset();
 							break;
 						}
-					System.out.print("//ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (c:Ãß°¡, r:Ãâ·Â, x:Á¾·á) : ");
+						
+					System.out.print("//ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (c:ì¶”ê°€, r:ì¶œë ¥, x:ì¢…ë£Œ) : ");
 					str1 = s.nextLine();
 					}
 			} else if(str.equals("s")) {
-				//¸ÅÃâ°ü¸®Ãß°¡
+
 			} else if(str.equals("x")) {
 				break;
 			}
-			System.out.println("ÀÛ¾÷À» ¼±ÅÃÇÏ½Ã¿À (m:¸Ş´º°ü¸®, o:ÁÖ¹®°ü¸®, s:¸ÅÃâ°ü¸®, x:Á¾·á)");
+			System.out.println("ì‘ì—…ì„ ì„ íƒí•˜ì‹œì˜¤ (m:ë©”ë‰´ê´€ë¦¬, o:ì£¼ë¬¸ê´€ë¦¬, s:ë§¤ì¶œê´€ë¦¬, x:ì¢…ë£Œ)");
 			str=s.nextLine();
 		}
-		System.out.println("ÇÁ·Î±×·¥ Á¾·á");
+		System.out.println("í”„ë¡œê·¸ë¨ ì¢…ë£Œ");
 		s.close();
 	}
+	
 }
